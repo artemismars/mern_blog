@@ -16,11 +16,11 @@ ___
 >## 팀 구성
 멤버     | 팀          | 개발         | 깃허브                             | 특이 사항
 ---     | ---         | ---          | ---                                | ---
-박은서   | 웹디자인    | figma 디자인  |                                    | 2월 15일 화요일 디자인 제출 예정
-이동현   | 프론트엔드 |              | https://github.com/Dhyunlee         |
-곽태욱   | 프론트엔드 |              | https://github.com/TaewookKwak      |
-신승식   | 백엔드     | 유저 계정      | https://github.com/artemismars    |
-이현진   | 백엔드     | 블로그 포스트  | https://github.com/5witchkr        |
+박은서   | Design    | figma 디자인  |                                    | 2월 15일 화요일 디자인 제출 예정
+이동현   | FE |              | https://github.com/Dhyunlee         |
+곽태욱   | FE |              | https://github.com/TaewookKwak      |
+신승식   | BE     | 유저 계정      | https://github.com/artemismars    |
+이현진   | BE     | 블로그 포스트  | https://github.com/5witchkr        |
 총원     | 5 |
 ___
 >## 스택
