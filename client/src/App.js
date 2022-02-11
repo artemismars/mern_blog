@@ -4,6 +4,9 @@ import Dashboard from './pages/Dashboard/dashboard'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './pages/Home/home'
 import Notfound from './pages/NotFound/notfound'
+import Edit from './pages/Edit/edit'
+import Post from './pages/Post/post'
+import Detail from './pages/Detail/detail'
 
 function App() {
   return (
@@ -18,8 +21,17 @@ function App() {
         <Route path="/signup">
           <Signup />
         </Route>
-        <Route path="/dashboard">
+        <Route path="/p/:username">
           <Dashboard />
+        </Route>
+        <Route path="/edit">
+          <Edit />
+        </Route>
+        <Route path="/post">
+          <Post />
+        </Route>
+        <Route path="/detail">
+          <Detail />
         </Route>
         <Route path="/">
           <Notfound />
