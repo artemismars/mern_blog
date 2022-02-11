@@ -16,14 +16,14 @@ ___
 ___
 >## 팀 구성
 
-멤버   | 팀          | 개발         | 깃허브                             | 특이 사항
----   | ---         | ---          | ---                                | ---
-박은서 | 웹디자인    | figma 디자인  |                                    | 2월 15일 화요일 디자인 제출 예정
-이동현 | 프론트엔드 |              | https://github.com/Dhyunlee         |
-곽태욱 | 프론트엔드 |              | https://github.com/TaewookKwak      |
-신승식 | 백엔드     | 유저 계정      | https://github.com/artemismars    |
-이현진 | 백엔드     | 블로그 포스트  | https://github.com/5witchkr        |
-총원 | 5 |
+멤버     | 팀          | 개발         | 깃허브                             | 특이 사항
+---     | ---         | ---          | ---                                | ---
+박은서   | 웹디자인    | figma 디자인  |                                    | 2월 15일 화요일 디자인 제출 예정
+이동현   | 프론트엔드 |              | https://github.com/Dhyunlee         |
+곽태욱   | 프론트엔드 |              | https://github.com/TaewookKwak      |
+신승식   | 백엔드     | 유저 계정      | https://github.com/artemismars    |
+이현진   | 백엔드     | 블로그 포스트  | https://github.com/5witchkr        |
+총원     | 5 |
 ___
 >## 스택
 #### 웹디자인
@@ -118,9 +118,10 @@ token    | String  |            | true   |
 ___
 >## 모듈 리스트
 
-모듈      | 기능                        | 버전 | 팀
----       | ---                         | --- | ---
+모듈      | 기능                        | 버전          | 팀
+---       | ---                         | ---          | ---
 `bcryptjs`  | 비밀번호 일방향 암호화 및 검사 | ^2.4.3    | 백엔드
-`dotenv`    | 서버 보안 관련 환경변수 설정   | ^16.0.0    | 백엔드
+`dotenv`    | 서버 보안 관련 환경변수 설정   | ^16.0.0   | 백엔드
 `mongoose`  | 몽고 DB 연결 및 제어         | ^6.2.1     | 백엔드
 `react-router-dorm` | 리액트 라우팅        | ^5.2.0     | 프론트엔드
+`axios` | 네트워크 송신                   | ^0.2.5      | 프론트엔드
