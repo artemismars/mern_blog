@@ -7,7 +7,7 @@ import Notfound from "./pages/NotFound/notfound";
 import Edit from "./pages/Edit/edit";
 import Post from "./pages/Post/post";
 import Detail from "./pages/Detail/detail";
-// 테스트
+
 function App() {
   return (
     <BrowserRouter>
