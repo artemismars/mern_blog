@@ -1,0 +1,27 @@
+.navContainer {
+    width: 100%;
+    border-bottom: solid 1px #e8e8e8;
+}
+
+.menu {
+    width: 85%;
+    margin: 25px auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;     
+}
+
+.userMenu ul{
+    width: 200px;
+    display: flex;
+}
+
+.userMenu ul li {
+    margin:0 20px;
+}
+
+.userMenu ul li a {
+    padding: 20px 0;
+}
+
+
