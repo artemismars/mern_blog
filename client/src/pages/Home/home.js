@@ -15,13 +15,13 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <button
-        className={`${styles.loginBtn} ${styles.btn}`}
+        className={styles.loginBtn}
         onClick={onMoveLogin}
       >
         로그인
       </button>
       <button
-        className={`${styles.loginBtn} ${styles.btn}`}
+        className={styles.signupBtn}
         onClick={onMoveSignup}
       >
         회원가입

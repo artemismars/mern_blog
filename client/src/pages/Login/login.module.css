@@ -1,0 +1,49 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(41, 41, 40);
+  border-radius: 1em;
+  margin: 1.5em;
+  height: 80vh;
+  width: 70vh;
+  padding: 2em;
+  box-sizing: border-box;
+}
+.signupContainer,
+.loginBtn,
+.emailInput,
+.passwordInput,
+.header {
+  margin: 1rem 0em;
+}
+
+.loginBtn,
+.emailInput,
+.passwordInput {
+  border: none;
+  outline: none;
+  padding: 1em;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 1em;
+}
+
+.signupSpan2 {
+  border-bottom: 1px solid;
+  cursor: pointer;
+}
+
+.loginBtn {
+  font-weight: 800;
+  background-color: rgb(80, 77, 77);
+  color: white;
+}
