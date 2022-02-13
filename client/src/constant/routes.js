@@ -1,0 +1,8 @@
+export const HOME = '/'
+export const LOGIN = '/login'
+export const SIGN_UP = '/signup'
+export const DASHBOARD = '/p/:username'
+export const POST = '/post'
+export const EDIT = '/edit'
+export const DETAIL = '/detail'
+export const NOT_FOUND = '/notfound'
