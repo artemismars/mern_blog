@@ -5,7 +5,7 @@ import Styles from './nav.module.css';
 
 function Nav(props) {
   const [isAuth, setIsAuth] = useState(false); //임시용
-
+ 
   function renderIsAuth(isLogin) {
     switch (isLogin) {
       case true:
