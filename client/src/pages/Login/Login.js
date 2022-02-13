@@ -1,6 +1,12 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import styles from './login.module.css'
+import * as ROUTES from '../../constant/routes'
 function Login(props) {
+  const history = useHistory()
+  const onMoveSignup = () => {
+    history.push(ROUTES.SIGN_UP) // moves to signup page
+  }
   return (
     <div className={styles.container}>
       <form className={styles.loginForm}>
@@ -14,7 +20,9 @@ function Login(props) {
         <button className={styles.loginBtn}>로그인</button>
         <div className={styles.signupContainer}>
           <span className={styles.signupSpan1}>아직 계정이 없으신가요?</span>
-          <span className={styles.signupSpan2}>회원가입</span>
+          <span className={styles.signupSpan2} onClick={onMoveSignup}>
+            회원가입
+          </span>
         </div>
       </form>
     </div>
