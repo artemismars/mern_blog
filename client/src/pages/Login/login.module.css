@@ -34,8 +34,16 @@
   padding: 1em;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 1em;
 }
 
 .signupSpan2 {
   border-bottom: 1px solid;
+  cursor: pointer;
+}
+
+.loginBtn {
+  font-weight: 800;
+  background-color: rgb(80, 77, 77);
+  color: white;
 }
