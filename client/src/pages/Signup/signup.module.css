@@ -1,11 +1,12 @@
 .container {
+  min-width: 500px;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.loginForm {
+.signupForm {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -13,38 +14,32 @@
   background-color: rgb(41, 41, 40);
   border-radius: 1em;
   margin: 1.5em;
-  height: 80vh;
   width: 70vh;
   padding: 2em;
   box-sizing: border-box;
 }
-.signupContainer,
-.loginBtn,
+
 .emailInput,
 .passwordInput,
 .header {
-  margin: 1rem 0em;
+  margin: 1rem 1.5em;
 }
 
-.loginBtn,
+.signupBtn,
 .emailInput,
 .passwordInput {
   border: none;
   outline: none;
+  margin: 1.5em;
   padding: 1em;
   width: 100%;
   box-sizing: border-box;
   border-radius: 1em;
 }
 
-.signupSpan2 {
-  border-bottom: 1px solid;
-  cursor: pointer;
-}
-
-.loginBtn {
+.signupBtn {
   font-weight: 800;
   background-color: rgb(80, 77, 77);
-  color: white;
+  color: #f3e7e7;
   cursor: pointer;
 }
