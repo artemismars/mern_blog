@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   width: 18em;
-  height: 15em;
+  height: fit-content;
 }
 
 .header {
@@ -21,10 +21,16 @@
 .psInput {
   box-sizing: content-box;
   padding: 1em;
-  color: #f5bba4;
+  color: #000000;
   border: #f5bba4 1px solid;
   width: 16em;
   font-size: 1em;
+  margin: 0.5em;
+}
+.emailInput::placeholder,
+.psInput::placeholder {
+  color: #801414;
+  font-weight: 700;
 }
 
 .psForm,
