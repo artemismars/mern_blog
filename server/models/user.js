@@ -17,6 +17,15 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  status: {
+    type: String,
+    enum: ["Pending", "Active"],
+    default: "Pending",
+  },
+  confirmationCode: {
+    type: String,
+    unique: true,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
