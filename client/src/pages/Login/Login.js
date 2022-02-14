@@ -5,7 +5,7 @@ import * as ROUTES from '../../constant/routes'
 function Login(props) {
   const history = useHistory()
   const onMoveSignup = () => {
-    history.push(ROUTES.SIGN_UP) // moves to signup page
+    history.push(ROUTES.SIGN_UP) // moves to signup page!
   }
   return (
     <div className={styles.container}>
