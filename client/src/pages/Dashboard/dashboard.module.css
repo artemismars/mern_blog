@@ -1,3 +1,114 @@
 .container {
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogConainer {
+  width: 20em;
+  text-align: center;
+}
+
+.avatarContainer {
+  position: relative;
+}
+
+.avatar {
+  width: 4em;
+  height: 4em;
+  position: fixed;
+  top: 6em;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.setBtn {
+  position: fixed;
+  top: 6em;
+  right: 40%;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+}
+
+.blogHeader {
+  margin-top: 2em;
+}
+
+.name {
+  font-size: 0.8em;
+  margin: 1em;
+}
+.blogPhrase {
+  font-size: 0.8em;
+  color: gray;
+  margin: 0.5em;
+}
+
+.postBtn {
+  padding: 0.7em;
+  width: 100%;
+}
+
+.postConainer {
+  width: 50%;
+}
+
+.postHeader {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-weight: 800;
+}
+
+.postBox {
+  width: 13em;
+  height: 13em;
+  background-color: #f3f3f3;
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  box-sizing: border-box;
+}
+
+.catagory {
+  color: rgb(0, 0, 0);
+}
+
+.postBoxContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  column-gap: 0.5em;
+  row-gap: 0.5em;
+}
+
+.recommandConainer {
+  width: 50%;
+}
+
+.recommandBoxConainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  column-gap: 0.5em;
+  row-gap: 0.5em;
+}
+
+.recommand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+  width: 10em;
+  height: 15em;
+  border-radius: 0.5em;
+  padding: 1em;
 }

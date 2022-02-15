@@ -1,5 +1,5 @@
 .container {
-  width: 100vw;
+  width: 100%;
   height: 20vh;
   background-color: #f5bba4;
   position: sticky;
@@ -15,7 +15,6 @@
 }
 .loginBtn {
   background: #ffffff;
-  border: 1px solid #c4c4c4;
   box-sizing: border-box;
   border-radius: 20px;
   padding: 0.5em 1em;

@@ -1,0 +1,30 @@
+.recommandConainer {
+  width: 50%;
+}
+
+.recommandBoxConainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  column-gap: 0.5em;
+  row-gap: 0.5em;
+}
+
+.recommand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+  width: 10em;
+  height: 15em;
+  border-radius: 0.5em;
+  padding: 1em;
+}
+
+.recommendAvatar {
+  width: 5em;
+  height: 5em;
+}
