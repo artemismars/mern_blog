@@ -1,27 +1,24 @@
-.navContainer {
-    width: 100%;
-    border-bottom: solid 1px #e8e8e8;
+.container {
+  width: 100vw;
+  height: 20vh;
+  background-color: #f5bba4;
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.menu {
-    width: 85%;
-    margin: 25px auto;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;     
+.logo {
+  margin: 0.5em;
 }
-
-.userMenu ul{
-    width: 200px;
-    display: flex;
+.loginBtn {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 20px;
+  padding: 0.5em 1em;
+  font-weight: 800;
+  margin: 0.5em;
 }
-
-.userMenu ul li {
-    margin:0 20px;
-}
-
-.userMenu ul li a {
-    padding: 20px 0;
-}
-
-

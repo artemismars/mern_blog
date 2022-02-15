@@ -1,46 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Button } from 'antd'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import Styles from './nav.module.css';
+import styles from './nav.module.css'
 
 function Nav(props) {
-  const [isAuth, setIsAuth] = useState(false); //임시용
- 
-  function renderIsAuth(isLogin) {
-    switch (isLogin) {
-      case true:
-        return (
-          <li>
-            <Link to="/logout">로그아웃</Link>
-          </li>
-        );
-      default:
-        return (
-          <li>
-            <Link to="/login">로그인</Link>
-          </li>
-        );
-    }
-  }
   return (
-    <nav className={Styles.navContainer}>
-      <div className={Styles.menu}>
-        <div className={Styles.logo}>
-          <h1>
-            <Link to="/">Blog</Link>
-          </h1>
-        </div>
-        <div className={Styles.userMenu}>
-          <ul>
-            <li>
-              <Link to="/create">글 작성</Link>
-            </li>
-            {renderIsAuth(isAuth)}
-          </ul>
-        </div>
-      </div>
+    <nav className={styles.container}>
+      <h1 className={styles.logo}>블로그 제목</h1>
+      <Button className={styles.loginBtn}>로그인</Button>
     </nav>
-  );
+  )
 }
 
-export default Nav;
+export default Nav
