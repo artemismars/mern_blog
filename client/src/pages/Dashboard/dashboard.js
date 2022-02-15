@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../../components/Nav/nav'
 import { List, Avatar, Space, Button } from 'antd'
 import styles from './dashboard.module.css'
@@ -10,7 +10,7 @@ const Dashboard = () => {
       <Nav />
       <div className={styles.container}>
         <article className={styles.blogConainer}>
-          <div className={styles.avatarContainer}>
+          <div id="avatarContainer" className={styles.avatarContainer}>
             <img
               className={styles.avatar}
               src="/image/avatar/default.png"
@@ -18,6 +18,7 @@ const Dashboard = () => {
             />
             <button className={styles.setBtn}></button>
           </div>
+
           <h1 className={styles.blogHeader}>블로그 제목</h1>
           <p className={styles.name}>블로그 주인</p>
           <p className={styles.blogPhrase}>블로그 내용</p>
