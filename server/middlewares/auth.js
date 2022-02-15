@@ -1,3 +1,4 @@
+console.log(`auth working`);
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
@@ -25,6 +26,19 @@ const generateConfirmationCode = async function (req, res, next) {
   }
 };
 
+const authenticateToken = (req, res, next) => {
+  const user = User.findOne({
+    email: req.body.email,
+  });
+  if (!user) {
+    res.status(400).send(`가입되지 않은 이메일 계정입니다.`);
+  } else {
+    res.locals.user;
+    next();
+  }
+};
+
 module.exports = {
   generateConfirmationCode,
+  authenticateToken,
 };
