@@ -61,10 +61,12 @@ const verifyUser = async (req, res, next) => {
     });
     if (!user) {
       res.status(400).send(`이메일 인증에 실패했습니다.`);
-    } else {
+    } else if (user.status != "Active") {
       user.status = "Active";
+      await user.save();
       res.status(200).send(`이메일 인증이 완료되었습니다.`);
-    }
+    } else if (user.status == "Active")
+      res.status(400).send(`이미 인증 완료된 계정입니다.`);
   } catch (error) {
     res.status(400).send(error.message);
   }
