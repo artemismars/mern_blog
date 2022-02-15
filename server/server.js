@@ -4,11 +4,12 @@ require("dotenv").config();
 require("./db/connect");
 // 프로덕션 모드 yes or no
 if (process.env.NODE_ENV === "production") require("./config/production");
+else process.env.PORT = 8080;
 console.log(`${process.env.NODE_ENV} mode on`);
 
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use("/api", require("./routes/routers"));
