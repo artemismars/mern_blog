@@ -17,6 +17,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 6,
   },
+  avatar: {
+    type: Object,
+  },
   status: {
     type: String,
     enum: ["Pending", "Active"],
