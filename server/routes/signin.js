@@ -1,9 +1,6 @@
-const User = require("../models/user");
-
+console.log(`signin working`);
 const signin = async (req, res) => {
-  const user = User.findOne({
-    email: req.body.email,
-  });
+  const user = res.locals.user;
   if (user.status != "Active") {
     res.status(401).send({
       message:
