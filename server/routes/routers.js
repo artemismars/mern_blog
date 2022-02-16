@@ -9,6 +9,6 @@ router.post(
   require("./signup")
 );
 router.get("/confirm/:confirmationCode", auth.verifyUser);
-router.post("/signin", require("./signin"));
+router.post("/signin", auth.authenticateToken, require("./signin"));
 
 module.exports = router;
