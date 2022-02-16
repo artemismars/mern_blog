@@ -1,6 +1,11 @@
 {
-  "editor.defaultFormatter": "SimonSiefke.prettier-vscode",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "reactSnippets.settings.prettierEnabled": true,
-  "emmet.includeLanguages": { "javascript": "javascriptreact" } // tag 자동 완성
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "window.zoomLevel": 0,
+  "editor.fontFamily": "'Fira Code', 'Courier New', monospace",
+  "editor.fontLigatures": true
 }
