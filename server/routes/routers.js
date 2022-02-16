@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../middlewares/auth");
-const avatar = require("../middlewares/avatar");
+const auth = require("../middleware/auth");
+const avatar = require("../middleware/avatar");
 // router working
 router.post(
   "/signup",
