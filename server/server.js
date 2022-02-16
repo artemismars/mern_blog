@@ -18,7 +18,6 @@ app.use(cors());
 app.use(express.json());
 app.use(fileUpload({ createParentPath: true }));
 app.use("/api", require("./routes/routers"));
-app.use("/content", require("./routes/content"));
 
 app.listen(PORT, () => {
   console.log(`listening to port on ${PORT}`);
