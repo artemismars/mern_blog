@@ -7,18 +7,17 @@ const multer = require("multer");
 
 
 
-router.post("/publish", (req, res) => {
+router.post("/publish", async (req, res) => {
 
     const content = new Content(req.body)
 
-    content.save((err, content) => {
+    await content.save((err, content) => {
         if(err) return res.status(400).json({ success: false, err })
         return res.status(200).json({
             success: true 
         })
     })
 });
-
 
 
 
