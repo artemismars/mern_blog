@@ -13,3 +13,15 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`listening to port on ${PORT}`);
 });
+
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
+
+//미들웨어추가
+app.use(fileUpload({createParentPath: true}));
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use('/content', require('./routes/content'));
+app.use('/contentup', require('./routes/contentup'));
