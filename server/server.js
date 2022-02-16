@@ -13,3 +13,23 @@ const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`listening to port on ${PORT}`);
 });
+
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
+const morgan = require('morgan')
+const _ = require('lodash')
+
+app.use(fileUpload({
+    createParentPath: true
+}));
+
+// 미들 웨어 추가
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(morgan('dev'));
+app.use('/content', require('./routes/content'));
+app.use('/contentup', require('./routes/contentup'));
