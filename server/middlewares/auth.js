@@ -5,7 +5,7 @@ const nodemailer = require("nodemailer");
 const User = require("../models/user");
 
 const generateConfirmationCode = async function (req, res, next) {
-  // console.log("generateConfirmationCode function working");
+  console.log("generateConfirmationCode function working");
   try {
     let user = await User.findOne({
       email: req.body.email,
@@ -13,14 +13,16 @@ const generateConfirmationCode = async function (req, res, next) {
     if (!user) {
       user = new User(req.body);
       user.password = bcrypt.hashSync(user.password, 8);
+      user.confirmationCode = jwt.sign(
+        {
+          email: req.body.email,
+        },
+        process.env.EMAIL_VERIFICATION_SECRET
+      );
+      res.locals.user = user;
+    } else {
+      res.status(400).send(`이미 회원가입된 이메일 계정입니다.`);
     }
-    user.confirmationCode = jwt.sign(
-      {
-        email: req.body.email,
-      },
-      process.env.EMAIL_VERIFICATION_SECRET
-    );
-    res.locals.user = user;
     next();
   } catch (error) {
     res.status(400).send(error.message);
@@ -28,29 +30,31 @@ const generateConfirmationCode = async function (req, res, next) {
 };
 
 const sendEmailVerification = (req, res, next) => {
-  const transport = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: process.env.SECRET_USER,
-      pass: process.env.SECRET_PASSWORD,
-    },
-  });
-
-  transport
-    .sendMail({
-      from: process.env.SECRET_USER,
-      to: res.locals.user.email,
-      subject: "회원가입을 위한 이메일 인증번호입니다.",
-      html: `
-    <h1>아래 링크를 클릭해주세요.</h1>
-    <a href="http://localhost:${process.env.PORT}/api/confirm/${res.locals.user.confirmationCode}">
-    이메일 인증번호 확인 링크
-    </a>      
-    `,
-    })
-    .catch((error) => {
-      console.log(error);
+  console.log(`sendEmailVerification working`);
+  if (res.locals.user.status != "Active") {
+    const transport = nodemailer.createTransport({
+      service: "Gmail",
+      auth: {
+        user: process.env.SECRET_USER,
+        pass: process.env.SECRET_PASSWORD,
+      },
     });
+    transport
+      .sendMail({
+        from: process.env.SECRET_USER,
+        to: res.locals.user.email,
+        subject: "회원가입을 위한 이메일 인증번호입니다.",
+        html: `
+      <h1>아래 링크를 클릭해주세요.</h1>
+      <a href="http://localhost:${process.env.PORT}/api/confirm/${res.locals.user.confirmationCode}">
+      이메일 인증번호 확인 링크
+      </a>      
+      `,
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   next();
 };
 
