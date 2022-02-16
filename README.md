@@ -16,8 +16,7 @@ ___
 >## 팀 구성
 멤버     | 팀          | 개발         | 깃허브                             | 특이 사항
 ---     | ---         | ---          | ---                                | ---
-박은서   | Design    | figma 디자인  |                                    | 2월 15일 화요일 디자인 제출 예정
-이동현   | FE |              | https://github.com/Dhyunlee         |
+박은서   | Design    | figma 디자인  |                                    | 
 곽태욱   | FE |              | https://github.com/TaewookKwak      |
 신승식   | BE     | 유저 계정      | https://github.com/artemismars    |
 이현진   | BE     | 블로그 포스트  | https://github.com/5witchkr        |
@@ -34,15 +33,15 @@ ___
 2. MongoDB
 ___
 >## 라우팅
-| 경로     | 설명       | 링크 |
-| ---     | ---        | --- |
-| `/`       | 메인 화면   |
-| `/login`  | 로그인      |
-| `/signup` | 회원가입    |
-| `/p/:username` | 유저 개인 블로그 |
-| `/edit`   | 게시글 수정 |
-| `/post`   | 게시글 업로드 |
-| `/detail` | 게시글 경로 |
+| 로컬 주소                             | 설명            | FE / BE | 웹 주소 
+| ---                                   | ---            | ---     | ---     
+| `https://localhost:8080/`            | 메인 화면        | FE     | https://mern-blog-heroku.herokuapp.com/
+| `https://localhost:8080/api/signin`  | 로그인          | BE      | https://mern-blog-heroku.herokuapp.com/api/signin
+| `https://localhost:8080/api/signup`  | 회원가입        | BE      | https://mern-blog-heroku.herokuapp.com/api/signup
+| `/p/:username`                       | 유저 개인 블로그 |
+| `/edit`                              | 게시글 수정     |
+| `/post`                              | 게시글 업로드   |
+| `/detail`                            | 게시글 경로     |
 ___
 >## 모델 리스트
 #### 1. User
