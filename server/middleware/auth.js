@@ -29,8 +29,10 @@ const generateConfirmationCode = async function (req, res, next) {
       await user.save();
       res.locals.user = user;
       next();
+    } else if (user.isVerified != true) {
+      res.status(200).json(`이메일 인증 대기중인 계정입니다.`);
     } else {
-      res.status(200).json(`이미 회원가입된 이메일 계정입니다.`);
+      res.status(200).json(`이미 회원가입된 계정입니다.`);
     }
   } catch (error) {
     res.status(400).json(error.message);
@@ -73,7 +75,7 @@ const verifyUser = async (req, res, next) => {
 
     const token = req.params.confirmationCode;
     jwt.verify(token, process.env.EMAIL_VERIFICATION_SECRET, (err, decoded) => {
-      if (err) throw Error(err.name);
+      if (err) throw err;
     });
     const user = await User.findOne({
       confirmationCode: req.params.confirmationCode,
@@ -87,31 +89,74 @@ const verifyUser = async (req, res, next) => {
     } else if (user.isVerified == true)
       res.status(400).json(`이미 인증 완료된 계정입니다.`);
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send(error);
   }
 };
 
-const authenticateUser = (req, res, next) => {
-  const user = User.findOne({
-    email: req.body.email,
-  });
-  if (!user) {
-    res.status(400).json(`가입되어 있지 않은 이메일 계정입니다.`);
-  }
-  if (user.isVerified == true) {
-    const isMatched = bcrypt.compareSync(req.body.password, user.password);
-    if (isMatched) {
-      console.log(user);
+const authenticateUser = async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      email: req.body.email,
+    });
+    if (!user) {
+      res.status(400).json(`가입되어 있지 않은 이메일 계정입니다.`);
     }
-    next();
-  } else {
-    res.status(400).json(`이메일 인증을 완료하지 않은 계정입니다.`);
+
+    const isMatched = bcrypt.compareSync(req.body.password, user.password);
+    if (isMatched && user.isVerified) {
+      user.accessToken = generateToken(user.id);
+      console.log(`생성 토큰: ${user.accessToken}`);
+      await user.save();
+      res.locals.user = user;
+      next();
+    } else {
+      res
+        .status(400)
+        .json(
+          "이메일 인증이 완료되지 않았습니다. 이메일 인증을 완료 후 다시 접속해주세요."
+        );
+    }
+  } catch (error) {
+    res.status(400).send(error);
   }
 };
 
+const generateToken = (id) => {
+  return jwt.sign(
+    {
+      id,
+    },
+    process.env.TOKEN_SECRET,
+    {
+      expiresIn: "5m",
+    }
+  );
+};
+
+const tokenVerification = async (req, res, next) => {
+  try {
+    const token = req.headers["x-access-token"];
+    if (!token) {
+      res.status(200).redirect("http://localhost:3000/");
+    }
+    jwt.verify(token, process.env.TOKEN_SECRET, async (err, decoded) => {
+      if (err) {
+        throw err;
+      } else {
+        const user = await User.findById(decoded.id);
+        res.locals.user = user;
+        if (user.accessToken === token) next();
+        else res.status(400).send(`invalid tokenss`);
+      }
+    });
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
 module.exports = {
   generateConfirmationCode,
   authenticateUser,
   sendEmailVerification,
   verifyUser,
+  tokenVerification,
 };
