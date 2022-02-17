@@ -17,21 +17,25 @@ const generateConfirmationCode = async function (req, res, next) {
         {
           email: req.body.email,
         },
-        process.env.EMAIL_VERIFICATION_SECRET
+        process.env.EMAIL_VERIFICATION_SECRET,
+        {
+          expiresIn: "5m",
+        }
       );
       res.locals.user = user;
+      next();
     } else {
-      res.status(400).send(`이미 회원가입된 이메일 계정입니다.`);
+      res.status(200).json(`이미 회원가입된 이메일 계정입니다.`);
     }
-    next();
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).json(error);
   }
 };
 
 const sendEmailVerification = (req, res, next) => {
   console.log(`sendEmailVerification working`);
-  if (res.locals.user.status != "Active") {
+
+  if (res.locals.user.isVerified != true) {
     const transport = nodemailer.createTransport({
       service: "Gmail",
       auth: {
@@ -60,17 +64,23 @@ const sendEmailVerification = (req, res, next) => {
 
 const verifyUser = async (req, res, next) => {
   try {
+    console.log(`verifyUser working`);
+
+    const token = req.params.confirmationCode;
+    jwt.verify(token, process.env.EMAIL_VERIFICATION_SECRET, (err, decoded) => {
+      if (err) throw Error(err.name);
+    });
     const user = await User.findOne({
       confirmationCode: req.params.confirmationCode,
     });
     if (!user) {
-      res.status(400).send(`이메일 인증에 실패했습니다.`);
-    } else if (user.status != "Active") {
-      user.status = "Active";
+      res.status(400).json(`이메일 인증에 실패했습니다.`);
+    } else if (user.isVerified != true) {
+      user.isVerified = true;
       await user.save();
-      res.status(200).send(`이메일 인증이 완료되었습니다.`);
-    } else if (user.status == "Active")
-      res.status(400).send(`이미 인증 완료된 계정입니다.`);
+      res.status(200).json(`이메일 인증이 완료되었습니다.`);
+    } else if (user.isVerified == true)
+      res.status(400).json(`이미 인증 완료된 계정입니다.`);
   } catch (error) {
     res.status(400).send(error.message);
   }
@@ -81,7 +91,7 @@ const authenticateToken = (req, res, next) => {
     email: req.body.email,
   });
   if (!user) {
-    res.status(400).send(`가입되지 않은 이메일 계정입니다.`);
+    res.status(400).json(`가입되지 않은 이메일 계정입니다.`);
   } else {
     res.locals.user;
     next();

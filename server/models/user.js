@@ -20,16 +20,29 @@ const userSchema = new Schema({
   avatar: {
     type: Object,
   },
-  status: {
-    type: String,
-    enum: ["Pending", "Active"],
-    default: "Pending",
+  isVerified: {
+    type: Boolean,
+    default: false,
   },
   confirmationCode: {
     type: String,
     unique: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
+
+userSchema.index(
+  { createdAt: 1 },
+  {
+    expires: "5m",
+    partialFilterExpression: {
+      isVerified: false,
+    },
+  }
+);
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
