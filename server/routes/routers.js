@@ -13,7 +13,7 @@ router.post(
 );
 router.get("/confirm/:confirmationCode", auth.verifyUser);
 // authenticatoinToken 미들웨어에 토큰 생성, 저장, 확인 기능 구현 예정
-router.post("/signin", auth.authenticateToken, require("./signin"));
+router.post("/signin", auth.authenticateUser, require("./signin"));
 
 //content router
 router.use("/content", require("./content"));

@@ -1,5 +1,5 @@
-console.log(`signin working`);
 const signin = async (req, res) => {
+  console.log(`signin working`);
   const user = res.locals.user;
   if (user.status != "Active") {
     res.status(401).send({

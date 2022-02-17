@@ -1,17 +1,21 @@
-console.log(`auth working`);
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const User = require("../models/user");
 
 const generateConfirmationCode = async function (req, res, next) {
+  console.log(`middleware/auth.js working`);
   console.log("generateConfirmationCode function working");
   try {
     let user = await User.findOne({
       email: req.body.email,
     });
     if (!user) {
-      user = new User(req.body);
+      user = new User({
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password,
+      });
       user.password = bcrypt.hashSync(user.password, 8);
       user.confirmationCode = jwt.sign(
         {
@@ -22,13 +26,14 @@ const generateConfirmationCode = async function (req, res, next) {
           expiresIn: "5m",
         }
       );
+      await user.save();
       res.locals.user = user;
       next();
     } else {
       res.status(200).json(`이미 회원가입된 이메일 계정입니다.`);
     }
   } catch (error) {
-    res.status(400).json(error);
+    res.status(400).json(error.message);
   }
 };
 
@@ -86,21 +91,27 @@ const verifyUser = async (req, res, next) => {
   }
 };
 
-const authenticateToken = (req, res, next) => {
+const authenticateUser = (req, res, next) => {
   const user = User.findOne({
     email: req.body.email,
   });
   if (!user) {
-    res.status(400).json(`가입되지 않은 이메일 계정입니다.`);
-  } else {
-    res.locals.user;
+    res.status(400).json(`가입되어 있지 않은 이메일 계정입니다.`);
+  }
+  if (user.isVerified == true) {
+    const isMatched = bcrypt.compareSync(req.body.password, user.password);
+    if (isMatched) {
+      console.log(user);
+    }
     next();
+  } else {
+    res.status(400).json(`이메일 인증을 완료하지 않은 계정입니다.`);
   }
 };
 
 module.exports = {
   generateConfirmationCode,
-  authenticateToken,
+  authenticateUser,
   sendEmailVerification,
   verifyUser,
 };
