@@ -1,4 +1,11 @@
 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
   background-color: rgb(255, 255, 255);
   padding: 3em;
   border-radius: 2em;

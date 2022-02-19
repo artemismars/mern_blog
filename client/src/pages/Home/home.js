@@ -14,19 +14,21 @@ const Home = () => {
   }
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>어서오세요</h1>
+      <div className={styles.form}>
+        <h1 className={styles.header}>어서오세요</h1>
 
-      <button className={styles.loginBtn} onClick={onMoveLogin}>
-        로그인
-      </button>
-      <div className={styles.commentContainer}>
-        <span className={styles.dash1}></span>
-        <span className={styles.comment}>처음이신가요?</span>
-        <span className={styles.dash2}></span>
+        <button className={styles.loginBtn} onClick={onMoveLogin}>
+          로그인
+        </button>
+        <div className={styles.commentContainer}>
+          <span className={styles.dash1}></span>
+          <span className={styles.comment}>처음이신가요?</span>
+          <span className={styles.dash2}></span>
+        </div>
+        <button className={styles.signupBtn} onClick={onMoveSignup}>
+          회원가입
+        </button>
       </div>
-      <button className={styles.signupBtn} onClick={onMoveSignup}>
-        회원가입
-      </button>
     </div>
   )
 }

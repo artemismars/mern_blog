@@ -1,11 +1,11 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "SimonSiefke.prettier-vscode",
   "editor.formatOnSave": true,
   "reactSnippets.settings.prettierEnabled": true,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "window.zoomLevel": 0,
+  "window.zoomLevel": -3,
   "editor.fontFamily": "'Fira Code', 'Courier New', monospace",
   "editor.fontLigatures": true
 }
