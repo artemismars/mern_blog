@@ -42,30 +42,28 @@ const generateConfirmationCode = async function (req, res, next) {
 const sendEmailVerification = (req, res, next) => {
   console.log(`sendEmailVerification working`);
 
-  if (res.locals.user.isVerified != true) {
-    const transport = nodemailer.createTransport({
-      service: "Gmail",
-      auth: {
-        user: process.env.SECRET_USER,
-        pass: process.env.SECRET_PASSWORD,
-      },
-    });
-    transport
-      .sendMail({
-        from: process.env.SECRET_USER,
-        to: res.locals.user.email,
-        subject: "회원가입을 위한 이메일 인증번호입니다.",
-        html: `
+  const transport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: process.env.SECRET_USER,
+      pass: process.env.SECRET_PASSWORD,
+    },
+  });
+  transport
+    .sendMail({
+      from: process.env.SECRET_USER,
+      to: res.locals.user.email,
+      subject: "회원가입을 위한 이메일 인증번호입니다.",
+      html: `
       <h1>아래 링크를 클릭해주세요.</h1>
       <a href="http://localhost:${process.env.PORT}/api/confirm/${res.locals.user.confirmationCode}">
       이메일 인증번호 확인 링크
       </a>      
       `,
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    })
+    .catch((error) => {
+      res.status(400).send(error.message);
+    });
   next();
 };
 
@@ -102,19 +100,18 @@ const authenticateUser = async (req, res, next) => {
       res.status(400).json(`가입되어 있지 않은 이메일 계정입니다.`);
     }
 
+    if (!user.isVerified)
+      res.status(400), send("이메일 인증이 완료되지 않은 계정입니다.");
+
     const isMatched = bcrypt.compareSync(req.body.password, user.password);
-    if (isMatched && user.isVerified) {
+    if (isMatched) {
       user.accessToken = generateToken(user.id);
       console.log(`생성 토큰: ${user.accessToken}`);
       await user.save();
       res.locals.user = user;
       next();
     } else {
-      res
-        .status(400)
-        .json(
-          "이메일 인증이 완료되지 않았습니다. 이메일 인증을 완료 후 다시 접속해주세요."
-        );
+      res.status(400).json("이메일 혹은 비밀번호가 일치하지 않습니다.");
     }
   } catch (error) {
     res.status(400).send(error);
