@@ -68,7 +68,13 @@ function Login(props) {
             로그인
           </Button>
         </Form.Item>
+
+        <div>
+          <span className={styles.signupPhrase}>계정이 없으신가요?</span>
+          <span className={styles.signup}>회원가입</span>
+        </div>
       </Form>
+      <div className={styles.half}></div>
     </div>
   )
 }

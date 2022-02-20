@@ -8,22 +8,26 @@
 .form {
   background-color: rgb(255, 255, 255);
   padding: 3em;
-  border-radius: 2em;
-  -webkit-box-shadow: 0px 0px 7px 4px rgba(158, 158, 158, 0.17);
-  box-shadow: 0px 0px 7px 4px rgba(158, 158, 158, 0.17);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 18em;
   height: fit-content;
+  flex: 1;
+}
+
+.half {
+  flex: 1;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 100%;
 }
 
 .header {
   font-size: 1.5em;
-  margin: 1em;
 }
-
+.blogDescriptionInput,
 .emailInput,
 .psInput,
 .ps2Input,
@@ -32,18 +36,19 @@
   box-sizing: content-box;
   padding: 0.7em;
   color: #000000;
-  border: #f5bba4 1px solid;
+  border: #c4c4c4 1px solid;
   width: 16em;
   font-size: 1em;
   margin: 0.5em;
 }
 
+.blogDescriptionInput::placeholder,
 .emailInput::placeholder,
 .psInput::placeholder,
 .ps2Input::placeholder,
 .nicknameInput::placeholder,
 .blognameInput::placeholder {
-  color: #801414;
+  color: #c4c4c4;
   font-weight: 700;
 }
 
@@ -57,5 +62,16 @@
   width: 16em;
   font-size: 1em;
   padding: 0.7em;
-  background-color: #f5bba4;
+  background-color: #c4c4c4;
+}
+
+.signinLogin,
+.signinPhrase {
+  margin: 1em;
+  font-size: 0.7em;
+}
+
+.signinLogin {
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }

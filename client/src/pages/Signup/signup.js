@@ -100,10 +100,30 @@ function Signup(props) {
         >
           <Input className={styles.blognameInput} placeholder="블로그 이름" />
         </Form.Item>
+        <Form.Item
+          className={styles.item}
+          name="blogdescription"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your blog description!',
+            },
+          ]}
+        >
+          <Input
+            className={styles.blogDescriptionInput}
+            placeholder="블로그 설명"
+          />
+        </Form.Item>
         <Button className={styles.signupBtn} type="primary" htmlType="submit">
           회원가입
         </Button>
+        <div>
+          <span className={styles.signinPhrase}>계정이 있으신가요?</span>
+          <span className={styles.signinLogin}>로그인</span>
+        </div>
       </Form>
+      <div className={styles.half}></div>
     </div>
   )
 }

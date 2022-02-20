@@ -11,29 +11,25 @@
 
 .avatarContainer {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .avatar {
   width: 4em;
   height: 4em;
-  position: fixed;
-  top: 6em;
-  left: 0;
-  right: 0;
-  margin: auto;
 }
 
 .setBtn {
-  position: fixed;
-  top: 6em;
-  right: 40%;
   width: 2em;
   height: 2em;
   border-radius: 50%;
 }
 
 .blogHeader {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .name {
