@@ -1,0 +1,49 @@
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  z-index: 9999;
+}
+
+.container {
+  margin: 2em;
+  width: 80%;
+  height: 5em;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.blogImage {
+  width: 4em;
+  height: 4em;
+  margin: 1em;
+}
+
+.blogInfo {
+  width: 20%;
+  margin: 1em;
+}
+.blogHeader {
+  font-size: 1.3em;
+}
+.blogUsername {
+  font-size: 0.7em;
+}
+
+.blogDescription {
+  width: 30%;
+  font-size: 0.7em;
+  color: #c4c4c4;
+}
+
+.btnContainer {
+  height: 5em;
+}
+
+.settingBtn {
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+}
