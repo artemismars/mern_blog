@@ -1,0 +1,23 @@
+button {
+  border: none;
+  outline: none;
+}
+
+span,
+div,
+ul,
+li,
+input,
+form,
+span,
+h3,
+h2,
+p,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  outline: none;
+}

@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18em;
+  height: fit-content;
+
+  flex: 1;
+}
+.half {
+  flex: 1;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+.emailInput,
+.psInput {
+  box-sizing: content-box;
+  padding: 1em;
+  color: #000000;
+  border: #c4c4c4 1px solid;
+  width: 16em;
+  font-size: 1em;
+  margin: 0.5em;
+}
+.emailInput::placeholder,
+.psInput::placeholder {
+  color: #c4c4c4;
+  font-weight: 700;
+}
+
+.psForm,
+.emailForm {
+  text-align: center;
+  color: red;
+}
+
+.loginBtn {
+  box-sizing: content-box;
+  width: 16em;
+  font-size: 1em;
+  padding: 1em;
+  background-color: #c4c4c4;
+}
+
+.signupPhrase,
+.signup {
+  margin: 1em;
+  font-size: 0.7em;
+}
+
+.signup {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}

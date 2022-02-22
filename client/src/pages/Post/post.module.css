@@ -1,0 +1,44 @@
+.container {
+  background-color: #f3f3f3;
+  height: 100vh;
+}
+
+.postContainer {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5em;
+}
+
+.inputHeader {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1em;
+  border: none;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 2em 0em;
+}
+
+.postBtn,
+.addPhotoBtn {
+  padding: 1em;
+  width: 6em;
+  cursor: pointer;
+  background-color: #f5bba4;
+  color: #801414;
+  font-weight: 800;
+}
+
+.inputContent {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1em;
+  height: 15em;
+  border: none;
+  resize: none;
+  outline: none;
+}

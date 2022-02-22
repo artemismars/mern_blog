@@ -1,0 +1,77 @@
+.container {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  display: flex;
+}
+
+.form {
+  background-color: rgb(255, 255, 255);
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18em;
+  height: fit-content;
+  flex: 1;
+}
+
+.half {
+  flex: 1;
+  background-color: #c4c4c4;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  font-size: 1.5em;
+}
+.blogDescriptionInput,
+.emailInput,
+.psInput,
+.ps2Input,
+.nicknameInput,
+.blognameInput {
+  box-sizing: content-box;
+  padding: 0.7em;
+  color: #000000;
+  border: #c4c4c4 1px solid;
+  width: 16em;
+  font-size: 1em;
+  margin: 0.5em;
+}
+
+.blogDescriptionInput::placeholder,
+.emailInput::placeholder,
+.psInput::placeholder,
+.ps2Input::placeholder,
+.nicknameInput::placeholder,
+.blognameInput::placeholder {
+  color: #c4c4c4;
+  font-weight: 700;
+}
+
+.item {
+  text-align: center;
+  color: red;
+}
+
+.signupBtn {
+  box-sizing: content-box;
+  width: 16em;
+  font-size: 1em;
+  padding: 0.7em;
+  background-color: #c4c4c4;
+}
+
+.signinLogin,
+.signinPhrase {
+  margin: 1em;
+  font-size: 0.7em;
+}
+
+.signinLogin {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
