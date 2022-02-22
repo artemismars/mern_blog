@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import * as ROUTES from '../../constant/routes'
 import { Form, Input, Button, Checkbox } from 'antd'
 import styles from './signup.module.css'
-
+import axios from 'axios'
 function Signup(props) {
   const [userForm, setUserForm] = useState({
     username: '',
@@ -14,8 +14,16 @@ function Signup(props) {
   const onSubmitSignup = (e) => {
     // 로직 작성..
   }
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Success:', values)
+
+    await axios.post('nodeURL' + '/api/', values).thne((res) => {
+      if (res.status === 200) {
+        console.log(res.data, 'Successful to post')
+      } else if (res.status !== 200) {
+        console.error('Fail to post')
+      }
+    })
   }
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
