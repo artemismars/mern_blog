@@ -1,25 +1,36 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import * as ROUTES from '../../constant/routes'
-import { Form, Input, Button, Checkbox } from 'antd'
-import styles from './signup.module.css'
-
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import * as ROUTES from "../../constant/routes";
+import { Form, Input, Button, Checkbox } from "antd";
+import styles from "./signup.module.css";
+import axios from "axios";
 function Signup(props) {
   const [userForm, setUserForm] = useState({
-    username: '',
-    email: '',
-    password: '',
-  })
+    username: "",
+    email: "",
+    password: "",
+  });
 
   const onSubmitSignup = (e) => {
     // 로직 작성..
-  }
-  const onFinish = (values) => {
-    console.log('Success:', values)
-  }
+  };
+  const onFinish = async (values) => {
+    console.log("Success:", values);
+
+    await axios
+      .post("http://localhost:8080" + "/api/signup", values)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(res.data, "Successful to post");
+        } else if (res.status !== 200) {
+          console.error("status code:", res.status);
+        }
+      })
+      .catch((err) => console.log("Fail to post", err));
+  };
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
-  }
+    console.log("Failed:", errorInfo);
+  };
 
   return (
     <div className={styles.container}>
@@ -46,7 +57,7 @@ function Signup(props) {
           rules={[
             {
               required: true,
-              message: 'Please input your email!',
+              message: "Please input your email!",
             },
           ]}
         >
@@ -58,7 +69,7 @@ function Signup(props) {
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: "Please input your password!",
             },
           ]}
         >
@@ -70,7 +81,7 @@ function Signup(props) {
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: "Please input your password!",
             },
           ]}
         >
@@ -82,7 +93,7 @@ function Signup(props) {
           rules={[
             {
               required: true,
-              message: 'Please input your nickname!',
+              message: "Please input your nickname!",
             },
           ]}
         >
@@ -94,7 +105,7 @@ function Signup(props) {
           rules={[
             {
               required: true,
-              message: 'Please input your blog name!',
+              message: "Please input your blog name!",
             },
           ]}
         >
@@ -106,7 +117,7 @@ function Signup(props) {
           rules={[
             {
               required: true,
-              message: 'Please input your blog description!',
+              message: "Please input your blog description!",
             },
           ]}
         >
@@ -125,7 +136,7 @@ function Signup(props) {
       </Form>
       <div className={styles.half}></div>
     </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;
