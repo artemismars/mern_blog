@@ -4,14 +4,13 @@ require("dotenv").config();
 require("./db/connect");
 // 프로덕션 모드 yes or no
 if (process.env.NODE_ENV === "production") require("./config/production");
-else process.env.PORT = 8080;
 console.log(`${process.env.NODE_ENV} mode on`);
 
 const express = require("express");
 const app = express();
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 //미들웨어추가
 app.use(cors());

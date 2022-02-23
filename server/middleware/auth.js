@@ -13,7 +13,7 @@ const generateConfirmationCode = async function (req, res, next) {
     if (!user) {
       user = new User({
         email: req.body.email,
-        username: req.body.username,
+        nickname: req.body.nickname,
         password: req.body.password,
       });
       user.password = bcrypt.hashSync(user.password, 8);
@@ -26,7 +26,9 @@ const generateConfirmationCode = async function (req, res, next) {
           expiresIn: "5m",
         }
       );
+
       await user.save();
+      console.log(user);
       res.locals.user = user;
       next();
     } else if (user.isVerified != true) {
@@ -35,7 +37,7 @@ const generateConfirmationCode = async function (req, res, next) {
       res.status(200).json(`이미 회원가입된 계정입니다.`);
     }
   } catch (error) {
-    res.status(400).json(error.message);
+    res.status(400).json({ error: error.message });
   }
 };
 
